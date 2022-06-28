@@ -16,6 +16,12 @@ export default function Home() {
   const [idsDasQuestoes, setIdsDasQuestoes] = useState<number[]>([])
   const [questao, setQuestao] = useState<QuestaoModel>(questaoMock)
 
+  // Carregamento de todos os id de questão Não condicionado a nenhum argumento
+  useEffect(() => {
+    console.log("useEffect sendo executado mais de uma vez")
+    carregarIdsDasQuestoes()   
+  }, []);  
+
   async function carregarIdsDasQuestoes() {
      const resp = await fetch(`${BASE_URL}/questionario`)
      const idsDasQuestoesLocal = await resp.json()
@@ -30,14 +36,7 @@ export default function Home() {
     //  console.log(QuestaoModel.criarUsandoOjecto(jsonQuestao))         
      setQuestao(novaQuestao) 
   }
-
-  // Carregamento de todos os id de questão Não condicionado a nenhum argumento
-  useEffect(() => {
-    console.log("useEffect")
-    carregarIdsDasQuestoes()
-  }, []);
-
-    // Carregamento de todos de questão Sendo Condicionado ao idQuestao existir
+  // Carregamento de todos de questão Sendo Condicionado ao idQuestao existir
   useEffect(() => {
       idsDasQuestoes.length > 0 && CarregarQuestao(idsDasQuestoes[0])
     }, [idsDasQuestoes.length > 0])  
