@@ -36,7 +36,9 @@ export default function Questao(props: QuestaoProps) {
     return (
         <div className={styles.Questao}>
             <Enunciado texto={questao.enunciado}/>
-            <Temporizador duracao={props.tempoPraResposta ?? 10} 
+            <Temporizador 
+                key={questao.id}
+                duracao={props.tempoPraResposta ?? 10} 
                 tempoEsgotado={props.tempoEsgotado}/>
             {renderizarResposta()}
         </div>
