@@ -5,7 +5,7 @@ export default(req, res) => {
     const questao = questoes.filter(questao => questao.id === idSelecionado)
     if (questao.length === 1) {
         const questaoSelecioada = questao[0].embaralharResposta()
-        const obj = questaoSelecioada.responderCom(3).paraObjeto()
+        const obj = questaoSelecioada.paraObjeto()
         res.status(200).json( obj )
     } else {
         res.status(204).json()
