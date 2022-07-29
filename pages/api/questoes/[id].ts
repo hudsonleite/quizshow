@@ -1,6 +1,6 @@
 import questoes from '../bdQuestao';
 
-export default(req, res) => {
+export default function questao(req, res) {
     const idSelecionado = +req.query.id
     const questao = questoes.filter(questao => questao.id === idSelecionado)
     if (questao.length === 1) {
